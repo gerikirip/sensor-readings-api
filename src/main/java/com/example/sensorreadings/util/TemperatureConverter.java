@@ -2,16 +2,15 @@ package com.example.sensorreadings.util;
 
 import com.example.sensorreadings.model.Temperature;
 import com.example.sensorreadings.model.TemperatureUnit;
+import lombok.experimental.UtilityClass;
 
 import java.math.BigDecimal;
 import java.math.RoundingMode;
 
+@UtilityClass
 public final class TemperatureConverter {
 
     private static final int SCALE = 2;
-
-    private TemperatureConverter() {
-    }
 
     public static BigDecimal toCelsius(Temperature temperature) {
         return switch (temperature.unit()) {
