@@ -9,3 +9,5 @@ app:
   jwt:
     secret: "vN8kQ2pLmX7sR4tY9wC1bH6dJ3fA0uZe"
     expiration-minutes: 60
+  readings:
+    location: ${READINGS_LOCATION:classpath:readings.csv}
