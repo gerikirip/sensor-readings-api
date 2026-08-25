@@ -43,7 +43,8 @@ public class ReadingController {
         );
         return readingMapper.toResponse(
                 readingService.query(query),
-                query.statistic()
+                query.statistic(),
+                query.metrics()
         );
     }
 }
