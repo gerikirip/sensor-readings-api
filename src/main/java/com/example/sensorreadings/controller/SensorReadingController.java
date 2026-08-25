@@ -6,7 +6,7 @@ import com.example.sensorreadings.model.Metric;
 import com.example.sensorreadings.model.ReadingQuery;
 import com.example.sensorreadings.model.Statistic;
 import com.example.sensorreadings.model.TemperatureUnit;
-import com.example.sensorreadings.service.ReadingService;
+import com.example.sensorreadings.service.SensorReadingService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,9 +19,9 @@ import java.util.Set;
 @RestController
 @RequestMapping("/api/readings")
 @RequiredArgsConstructor
-public class ReadingController {
+public class SensorReadingController {
 
-    private final ReadingService readingService;
+    private final SensorReadingService sensorReadingService;
     private final ReadingMapper readingMapper;
 
     @GetMapping
@@ -42,7 +42,7 @@ public class ReadingController {
                 unit
         );
         return readingMapper.toResponse(
-                readingService.query(query),
+                sensorReadingService.query(query),
                 query.statistic(),
                 query.metrics()
         );
