@@ -1,3 +1,11 @@
 spring:
   application:
     name: sensor-readings-api
+
+app:
+  security:
+    username: admin
+    password: admin
+  jwt:
+    secret: "vN8kQ2pLmX7sR4tY9wC1bH6dJ3fA0uZe"
+    expiration-minutes: 60
