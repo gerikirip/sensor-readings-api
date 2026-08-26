@@ -40,10 +40,18 @@ class CsvReadingLoaderTest {
 
         assertAll(
                 () -> assertEquals(1L, reading.deviceId()),
-                () -> assertEquals(Instant.parse("2026-07-10T10:00:00Z"), reading.measureTime()),
-                () -> assertEquals(new BigDecimal("23"), reading.temperature().value()),
-                () -> assertEquals(TemperatureUnit.C, reading.temperature().unit()),
-                () -> assertEquals(new BigDecimal("42"), reading.humidity())
+                () -> assertEquals(
+                        Instant.parse("2026-07-10T10:00:00Z"),
+                        reading.measureTime()),
+                () -> assertEquals(
+                        new BigDecimal("23"),
+                        reading.temperature().value()),
+                () -> assertEquals(
+                        TemperatureUnit.C,
+                        reading.temperature().unit()),
+                () -> assertEquals(
+                        new BigDecimal("42"),
+                        reading.humidity())
         );
     }
 

@@ -43,10 +43,14 @@ class SensorReadingServiceTest {
         assertAll(
                 () -> assertEquals(1L, result.getFirst().deviceId()),
                 () -> assertEquals(T18, result.getFirst().measureTime()),
-                () -> assertEquals(new BigDecimal("20.00"), result.getFirst().temperature().value()),
+                () -> assertEquals(
+                        new BigDecimal("20.00"),
+                        result.getFirst().temperature().value()),
                 () -> assertEquals(2L, result.get(1).deviceId()),
                 () -> assertEquals(T12, result.get(1).measureTime()),
-                () -> assertEquals(new BigDecimal("30.00"), result.get(1).temperature().value())
+                () -> assertEquals(
+                        new BigDecimal("30.00"),
+                        result.get(1).temperature().value())
         );
     }
 
@@ -87,7 +91,7 @@ class SensorReadingServiceTest {
                 IllegalArgumentException.class,
                 () -> service.query(query)
         );
-        
+
         assertEquals("Invalid date range: from is later than to", exception.getMessage());
     }
 }
