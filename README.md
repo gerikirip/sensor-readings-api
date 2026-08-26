@@ -53,7 +53,9 @@ Use the returned token as `Authorization: Bearer <token>` on `/api/readings`. Sw
 | `metrics` | no | `TEMPERATURE`, `HUMIDITY`, or both. Omit for both |
 | `statistic` | no | `MIN`, `MAX`, or `AVERAGE` (default `AVERAGE`) over the matching rows **per device** |
 
-Without a date range, min / max / average are computed on a single latest row, so they are the same number.
+Without a date range each device contributes one reading, so MIN, MAX, and AVERAGE are equal.
+
+If both `from` and `to` are set and `from` is later than `to`, the API returns `400` with `Invalid date range: from is later than to`.
 
 Latest snapshot (both metrics, average, Celsius):
 
