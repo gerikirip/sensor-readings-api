@@ -33,7 +33,7 @@ public class StatisticCalculatorTest {
     }
     
     @Test
-    void shouldRetunrMax() {
+    void shouldReturnMax() {
         BigDecimal result = StatisticCalculator.apply(VALUES, Statistic.MAX);
         
         assertEquals(new BigDecimal("32"), result);

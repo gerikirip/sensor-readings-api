@@ -26,6 +26,10 @@ public class SensorReadingService {
     }
 
     public List<SensorReading> query(ReadingQuery query) {
+        if (query.from() != null && query.to() != null && query.from().isAfter(query.to())) {
+            throw new IllegalArgumentException("Invalid date range: from is later than to");
+        }
+
         List<SensorReading> matching = readings.stream()
                 .filter(reading -> matchesDevice(reading, query))
                 .filter(reading -> matchesDateRange(reading, query))

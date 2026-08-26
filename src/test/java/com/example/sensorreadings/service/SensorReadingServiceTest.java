@@ -11,8 +11,7 @@ import java.math.BigDecimal;
 import java.time.Instant;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertAll;
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class SensorReadingServiceTest {
 
@@ -71,5 +70,24 @@ class SensorReadingServiceTest {
                 () -> assertEquals(2L, result.get(1).deviceId()),
                 () -> assertEquals(T10, result.get(1).measureTime())
         );
+    }
+
+    @Test
+    void shouldRejectDateRangeWhenFromIsAfterTo() {
+        ReadingQuery query = new ReadingQuery(
+                null,
+                T18,
+                T10,
+                null,
+                Statistic.AVERAGE,
+                TemperatureUnit.C
+        );
+
+        IllegalArgumentException exception = assertThrows(
+                IllegalArgumentException.class,
+                () -> service.query(query)
+        );
+        
+        assertEquals("Invalid date range: from is later than to", exception.getMessage());
     }
 }
